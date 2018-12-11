@@ -15,10 +15,10 @@
  * - Obter uma cor em uma dada posição [v] []
  * - Implementar o Welsh Powell para coloração [v] []
  * - Implementar o Dsatur para coloração [v] []
- * - Mostrar o tabuleiro [] []
- * - Mostrar o tabuleiro pré-colorido dos dados do arquivo [] []
- * - Lê o arquivo no formato index -> value [] []
- * - Retorna o número de cores iniciais do arquivo
+ * - Mostrar o tabuleiro [v] []
+ * - Mostrar o tabuleiro pré-colorido dos dados do arquivo [v] []
+ * - Lê o arquivo no formato index -> value [v] []
+ * - Retorna o número de cores iniciais do arquivo [v]
  *
  * */
 
