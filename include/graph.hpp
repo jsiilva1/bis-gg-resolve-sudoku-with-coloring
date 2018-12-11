@@ -7,6 +7,20 @@
 
 using namespace std;
 
+/*
+ *
+ * To-do:
+ *
+ * - Adicionar novo vértice [v] []
+ * - Adicionar y vertices [v] []
+ * - verificar se é adjacente [v] []
+ * - adicionar uma aresta [v] []
+ * - obter um dado vértice [v] []
+ * - obter o grau do vértice [v] []
+ * - mostrar o grafo [v] []
+ *
+ * */
+
 class Graph {
 
 private:
@@ -66,19 +80,6 @@ public:
     */
     void showGraph() const;
 
-    /*
-     *
-     * To-do:
-     *
-     * - Adicionar novo vértice [v] []
-     * - Adicionar y vertices [v] []
-     * - verificar se é adjacente [v] []
-     * - adicionar uma aresta [v] []
-     * - obter um dado vértice [v] []
-     * - obter o grau do vértice [v] []
-     * - mostrar o grafo [v] []
-     *
-     * */
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_GRAPH_HPP
