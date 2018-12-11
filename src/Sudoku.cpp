@@ -4,6 +4,7 @@
  *
 **/
 
+#include <fstream>
 #include "../include/sudoku.hpp"
 
 using namespace std;
@@ -47,4 +48,24 @@ int Sudoku::getPreColorSize() const {
     return this->indexConstants.size();
 }
 
+bool Sudoku::loadBoardFromFile(const string& name) {
+    ifstream file;
+    string lines;
+
+    int index, colors, j = 0;
+    vector<tuple<int, int> > numbers;
+
+    file.open(name);
+    if (!file.is_open())
+        return false;
+
+    while (!file.eof() && j < 81) {
+        getline(file, lines);
+        sscanf(lines.c_str(), "%d %d", &index, &colors);
+        numbers.emplace_back(make_tuple(index, colors));
+        j++;
+    }
+
+    return true;
+}
 

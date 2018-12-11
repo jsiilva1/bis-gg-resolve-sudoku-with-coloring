@@ -85,10 +85,10 @@ public:
 
     /**
      *
-     *	Pré-carrega as cores vindo do arquivo
+     *	Pré carrega as cores vindo do arquivo
      *
     */
-    bool loadFromFile(const string& string);
+    bool loadBoardFromFile(const string& name);
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_SUDOKU_H
