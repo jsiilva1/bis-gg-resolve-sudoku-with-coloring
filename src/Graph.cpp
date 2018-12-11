@@ -50,9 +50,8 @@ void Graph::addEdge(int v1, int v2) {
 void Graph::showGraph() const {
 
     set<int>::iterator j;
-    static int graphSize = this->vertex.size();
 
-    for (int i = 1; i < graphSize-1; i++) {
+    for (unsigned int i = 1; i < this->getGraphSize() - 1; i++) {
         cout << "v[" << i << "] -> ";
 
         for (j = this->vertex.at(i).begin(); j != this->vertex.at(i).end(); j++) {
@@ -64,4 +63,8 @@ void Graph::showGraph() const {
 
         cout << endl;
     }
+}
+
+int Graph::getGraphSize() const {
+    return this->vertex.size();
 }

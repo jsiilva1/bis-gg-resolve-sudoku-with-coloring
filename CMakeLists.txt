@@ -8,4 +8,4 @@ add_executable(
         main.cpp
         include/graph.hpp
         include/sudoku.hpp
-        src/Graph.cpp)
+        src/Graph.cpp src/Sudoku.cpp)

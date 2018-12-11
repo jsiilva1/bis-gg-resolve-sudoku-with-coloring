@@ -17,7 +17,7 @@ using namespace std;
  * - adicionar uma aresta [v] [v]
  * - obter um dado vértice [v] [v]
  * - obter o grau do vértice [v] [v]
- * - mostrar o grafo [v] []
+ * - mostrar o grafo [v] [v]
  *
  * */
 
@@ -82,6 +82,13 @@ public:
      *
     */
     void showGraph() const;
+
+    /**
+     *
+     *	Obtém o tamanho do grafo
+     *
+    */
+    int getGraphSize() const;
 
 };
 
