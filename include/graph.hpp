@@ -31,21 +31,21 @@ public:
     Graph(vector<set<int> > vertices);
     ~Graph() = default;
 
-    /*
+    /**
      *
      * Adiciona um novo vértice e retorna o número
      *
      * */
     int newVertex();
 
-    /*
+    /**
      *
      * Adicionar n vértices ap grafo
      *
      * */
     void newManyVertex(int n);
 
-    /*
+    /**
      *
      * Obter um vértice por um índice específico
      *
@@ -59,14 +59,14 @@ public:
     */
     int getVertexDegree(int vertexIndex) const;
 
-    /*
+    /**
      *
      * Adicionar uma aresta entre dois vértices
      *
      * */
     void addEdge(int v1, int v2);
 
-    /*
+    /**
      *
      * Verificar se um vértice é adjacente a outro na lista
      *
