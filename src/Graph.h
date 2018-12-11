@@ -13,3 +13,8 @@ int Graph::newVertex()
     this->vertex.emplace_back(set<int>());
     return this->vertex.size() - 1;
 }
+
+void Graph::newManyVertex(int n) {
+    for (int i = 0; i < n; i++)
+        this->newVertex();
+}
