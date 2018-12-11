@@ -1,6 +1,12 @@
 #include <iostream>
+#include <locale>
+
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    setlocale(LC_ALL, "portuguese");
+
+    cout << "Maçã";
     return 0;
 }

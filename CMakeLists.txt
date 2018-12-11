@@ -3,4 +3,4 @@ project(bis_gg_resolve_sudoku_with_coloring)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(bis_gg_resolve_sudoku_with_coloring main.cpp include/graph.hpp)
+add_executable(bis_gg_resolve_sudoku_with_coloring main.cpp include/graph.hpp include/sudoku.h)

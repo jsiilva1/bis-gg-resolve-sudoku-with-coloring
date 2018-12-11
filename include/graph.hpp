@@ -12,7 +12,7 @@ using namespace std;
  * To-do:
  *
  * - Adicionar novo vértice [v] []
- * - Adicionar y vertices [v] []
+ * - Adicionar n vertices [v] []
  * - verificar se é adjacente [v] []
  * - adicionar uma aresta [v] []
  * - obter um dado vértice [v] []
@@ -43,7 +43,7 @@ public:
      * Adicionar n vértices ap grafo
      *
      * */
-    void newManyVertex();
+    void newManyVertex(int n);
 
     /*
      *
