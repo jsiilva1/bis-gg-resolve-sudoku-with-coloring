@@ -11,12 +11,12 @@ using namespace std;
  *
  * To-do:
  *
- * - Adicionar novo vértice [v] []
- * - Adicionar n vertices [v] []
- * - verificar se é adjacente [v] []
- * - adicionar uma aresta [v] []
- * - obter um dado vértice [v] []
- * - obter o grau do vértice [v] []
+ * - Adicionar novo vértice [v] [v]
+ * - Adicionar n vertices [v] [v]
+ * - verificar se é adjacente [v] [v]
+ * - adicionar uma aresta [v] [v]
+ * - obter um dado vértice [v] [v]
+ * - obter o grau do vértice [v] [v]
  * - mostrar o grafo [v] []
  *
  * */
@@ -74,7 +74,7 @@ public:
      * Verificar se um vértice é adjacente a outro na lista
      *
      * */
-    bool isEdgeExists(const set<int>& v1, int v2) const;
+    bool isAdjacent(const set<int>& v1, int v2) const;
 
     /**
      *

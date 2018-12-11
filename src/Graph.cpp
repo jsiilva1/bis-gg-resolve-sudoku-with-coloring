@@ -2,7 +2,7 @@
  *
  * Created by Jr Silva on 11/12/2018
  *
-* */
+**/
 
 #include "../include/graph.hpp"
 
@@ -31,7 +31,7 @@ void Graph::pushBackEdge(int vertexIndex, int vertexTarget) {
     this->vertex[vertexIndex].insert(vertexTarget);
 }
 
-bool Graph::isEdgeExists(const set<int> &v1, int v2) const {
+bool Graph::isAdjacent(const set<int> &v1, int v2) const {
     return v1.find(v2) != v1.end();
 }
 
@@ -39,9 +39,9 @@ void Graph::addEdge(int v1, int v2) {
     if (v1 >= this->vertex.size() || v2 >= this->vertex.size())
         return;
 
-    if (!this->isEdgeExists(this->getVertex(v1), v2))
+    if (!this->isAdjacent(this->getVertex(v1), v2))
         pushBackEdge(v1, v2);
 
-    if (!this->isEdgeExists(this->getVertex(v2), v1))
+    if (!this->isAdjacent(this->getVertex(v2), v1))
         pushBackEdge(v2, v1);
 }
