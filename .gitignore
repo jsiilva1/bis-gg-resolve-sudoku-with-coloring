@@ -1,0 +1,8 @@
+/cmake-build-debug
+/bin
+.classpath
+.project
+/build
+.settings/
+.idea
+/out
