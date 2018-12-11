@@ -34,3 +34,17 @@ Sudoku::Sudoku(vector<tuple<int, int> > numbers) {
         this->indexConstants.insert(get<0>(numbers.at(j)));
     }
 }
+
+const Graph& Sudoku::getGraph() const {
+    return this->graph;
+}
+
+int Sudoku::getColorAt(int n) const {
+    return this->colors[n];
+}
+
+int Sudoku::getPreColorSize() const {
+    return this->indexConstants.size();
+}
+
+
