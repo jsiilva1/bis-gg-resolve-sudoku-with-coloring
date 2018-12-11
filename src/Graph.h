@@ -18,3 +18,13 @@ void Graph::newManyVertex(int n) {
     for (int i = 0; i < n; i++)
         this->newVertex();
 }
+
+const set<int>& Graph::getVertex(int vertexIndex) const {
+    return this->vertex.at(vertexIndex);
+}
+
+int Graph::getVertexDegree(int vertexIndex) const {
+    return this->vertex.at(vertexIndex).size();
+}
+
+
