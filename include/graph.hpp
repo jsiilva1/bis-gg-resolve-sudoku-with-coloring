@@ -1,0 +1,10 @@
+#ifndef BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_GRAPH_HPP
+#define BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_GRAPH_HPP
+
+#include <vector>
+#include <iostream>
+#include <set>
+
+
+
+#endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_GRAPH_HPP
