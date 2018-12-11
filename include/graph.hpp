@@ -19,15 +19,64 @@ public:
 
     /*
      *
+     * Adiciona um novo vértice e retorna o número
+     *
+     * */
+    int newVertex();
+
+    /*
+     *
+     * Adicionar n vértices ap grafo
+     *
+     * */
+    void newManyVertex();
+
+    /*
+     *
+     * Obter um vértice por um índice específico
+     *
+     * */
+    const set<int>& getVertex(int vertexIndex) const;
+
+    /**
+     *
+     *	Obtém o grau de um vértice específico
+     *
+    */
+    int getVertexDegree(int vertexIndex) const;
+
+    /*
+     *
+     * Adicionar uma aresta entre dois vértices
+     *
+     * */
+    void addEdge(int v1, int v2);
+
+    /*
+     *
+     * Verificar se um vértice é adjacente a outro na lista
+     *
+     * */
+    bool isEdgeExists(const set<int>& v1, int v2) const;
+
+    /**
+     *
+     *	Mostra o grafo
+     *
+    */
+    void showGraph() const;
+
+    /*
+     *
      * To-do:
      *
-     * - Adicionar novo vértice
-     * - verificar se é adjacente
-     * - adicionar uma aresta
-     * - obter um dado vértice
-     * - obter o grau do vértice
-     * - mostrar o grafo
-     *
+     * - Adicionar novo vértice [v] []
+     * - Adicionar y vertices [v] []
+     * - verificar se é adjacente [v] []
+     * - adicionar uma aresta [v] []
+     * - obter um dado vértice [v] []
+     * - obter o grau do vértice [v] []
+     * - mostrar o grafo [v] []
      *
      * */
 };
