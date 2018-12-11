@@ -26,6 +26,9 @@ class Graph {
 private:
     vector<set<int> > vertex;
 
+    // Empurra para trás um dado vértice para um novo vértice
+    void pushBackEdge(int vertexIndex, int vertexTarget);
+
 public:
     Graph() = default;
     Graph(vector<set<int> > vertices);
@@ -50,14 +53,14 @@ public:
      * Obter um vértice por um índice específico
      *
      * */
-    const set<int>& getVertex(int vertexIndex) const;
+    const set<int>& getVertex(unsigned int vertexIndex) const;
 
     /**
      *
      *	Obtém o grau de um vértice específico
      *
     */
-    int getVertexDegree(int vertexIndex) const;
+    int getVertexDegree(unsigned int vertexIndex) const;
 
     /**
      *
