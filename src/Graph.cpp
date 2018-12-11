@@ -4,6 +4,7 @@
  *
 **/
 
+#include <iomanip>
 #include "../include/graph.hpp"
 
 Graph::Graph(vector<set<int> > vertex) : vertex(std::move(vertex)) {}
@@ -31,7 +32,7 @@ void Graph::pushBackEdge(int vertexIndex, int vertexTarget) {
     this->vertex[vertexIndex].insert(vertexTarget);
 }
 
-bool Graph::isAdjacent(const set<int> &v1, int v2) const {
+bool Graph::isAdjacent(const set<int>& v1, int v2) const {
     return v1.find(v2) != v1.end();
 }
 
@@ -44,4 +45,23 @@ void Graph::addEdge(int v1, int v2) {
 
     if (!this->isAdjacent(this->getVertex(v2), v1))
         pushBackEdge(v2, v1);
+}
+
+void Graph::showGraph() const {
+
+    set<int>::iterator j;
+    static int graphSize = this->vertex.size();
+
+    for (int i = 1; i < graphSize-1; i++) {
+        cout << "v[" << i << "] -> ";
+
+        for (j = this->vertex.at(i).begin(); j != this->vertex.at(i).end(); j++) {
+            if (j != this->vertex.at(i).begin())
+                cout << ", ";
+
+            cout << setw(2) << *j;
+        }
+
+        cout << endl;
+    }
 }
