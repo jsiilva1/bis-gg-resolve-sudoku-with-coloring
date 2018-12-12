@@ -66,6 +66,16 @@ bool Sudoku::loadBoardFromFile(const string& name) {
         j++;
     }
 
+    // Pré-colore os números do tabuleiro no formato index -> value
+    this->preColoring(numbers);
+
     return true;
 }
 
+void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
+    for (int i = 0; i < numbersAux.size(); i++) {
+        // Pré-colorindo
+        this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
+        this->indexConstants.insert(get<0>(numbersAux.at(i)));
+    }
+}

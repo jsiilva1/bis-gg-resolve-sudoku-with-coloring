@@ -20,7 +20,10 @@ int main() {
     graph.showGraph();
 
     string fileDirectory = "J:\\Jr Silva\\Faculdade\\bis-gg-resolve-sudoku-with-coloring\\data\\";
-    sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
+    bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
 
-    
+    if (read)
+        cout << "OK! Dados recebidos";
+
+    cout << sudoku.getPreColorSize();
 }

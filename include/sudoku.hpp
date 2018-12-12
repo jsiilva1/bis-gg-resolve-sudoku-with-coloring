@@ -26,6 +26,7 @@ class Sudoku {
 private:
     Graph graph;
     int colors[81];
+    vector<tuple<int, int> > numbers;
     set<int> indexConstants;
 
 public:
@@ -89,6 +90,8 @@ public:
      *
     */
     bool loadBoardFromFile(const string& name);
+
+    void preColoring (vector<tuple<int, int> > numbersAux);
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_SUDOKU_H
