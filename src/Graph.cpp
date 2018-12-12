@@ -51,7 +51,7 @@ void Graph::showGraph() const {
 
     set<int>::iterator j;
 
-    for (unsigned int i = 1; i < this->getGraphSize() - 1; i++) {
+    for (unsigned int i = 0; i < this->getGraphSize(); i++) {
         cout << "v[" << i << "] -> ";
 
         for (j = this->vertex.at(i).begin(); j != this->vertex.at(i).end(); j++) {

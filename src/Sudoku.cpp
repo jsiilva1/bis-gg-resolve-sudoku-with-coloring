@@ -43,35 +43,16 @@ const Graph& Sudoku::getGraph() const {
     return this->graph;
 }
 
-int Sudoku::getColorAt(int n) const {
-    return this->colors[n];
-}
-
-int Sudoku::getPreColorSize() const {
-    return this->indexConstants.size();
-}
-
-void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
-    for (int i = 0; i < numbersAux.size(); i++) {
-        // Pré-colorindo
-        this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
-        this->indexConstants.insert(get<0>(numbersAux.at(i)));
-    }
-}
-
-static int getColumnQuadrant(int i) {
-    return (i / 9) / 3;
-}
-
 void Sudoku::generateGraph() {
 
     // Aloca 81 vértices para o grafo
     this->graph.newManyVertex(81);
 
+    static int quadrantRow;
+    static int quadrantColumn;
+
     for (int i = 0; i < 81; i++) {
         static int j;
-        static int quadrantRow;
-        static int quadrantColumn;
 
         quadrantRow = this->getRowQuadrant(i);
         quadrantColumn = this->getColumnQuadrant(i);
@@ -106,6 +87,22 @@ void Sudoku::generateGraph() {
             this->graph.addEdge(i, j);
             j += 9;
         }
+    }
+}
+
+int Sudoku::getColorAt(int n) const {
+    return this->colors[n];
+}
+
+int Sudoku::getPreColorSize() const {
+    return this->indexConstants.size();
+}
+
+void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
+    for (int i = 0; i < numbersAux.size(); i++) {
+        // Pré-colorindo
+        this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
+        this->indexConstants.insert(get<0>(numbersAux.at(i)));
     }
 }
 
