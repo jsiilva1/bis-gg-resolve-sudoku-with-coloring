@@ -97,3 +97,27 @@ void Sudoku::showBoardPreColorIndex() const {
 
     cout << "]" << endl;
 }
+
+void Sudoku::showFullBoard() const {
+    cout << "  ----------------------- ";
+    for (int i = 0; i < 81; i++) {
+
+        if (i % 9 == 0 && i != 0) {
+            cout << " |" << endl;
+            if ((i / 9) % 3 == 0)
+                cout << "  ----------------------- " << endl;
+        }
+
+        if (i % 3 == 0)
+            cout << " |";
+
+        if (this->colors[i] == 0)
+            cout << "  ";
+        else
+            cout << " " << this->colors[i];
+
+    }
+
+    cout << " |" << endl;
+    cout << "  ----------------------- ";
+}

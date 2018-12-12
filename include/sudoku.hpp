@@ -62,20 +62,19 @@ public:
      */
     bool WelshPowell();
 
-
-    /**
-     *
-     *	Mostra o board do sudoku
-     *
-    */
-    void showBoard() const;
-
     /**
      *
      *	Mostra os índices da pré-coloração
      *
     */
     void showBoardPreColorIndex() const;
+
+    /**
+     *
+     *	Mostra o board do sudoku
+     *
+    */
+    void showFullBoard() const;
 
     /**
      *
