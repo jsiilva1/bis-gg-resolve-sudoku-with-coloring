@@ -5,7 +5,6 @@
 **/
 
 #include <fstream>
-#include <iomanip>
 #include "../include/sudoku.hpp"
 
 using namespace std;
@@ -46,6 +45,29 @@ int Sudoku::getPreColorSize() const {
     return this->indexConstants.size();
 }
 
+void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
+    for (int i = 0; i < numbersAux.size(); i++) {
+        // Pré-colorindo
+        this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
+        this->indexConstants.insert(get<0>(numbersAux.at(i)));
+    }
+}
+
+void Sudoku::generateGraph() {
+    // Aloca 81 vértices para o grafo
+    this->graph.newManyVertex(81);
+
+    static int quadrantRow;
+    static int quadrantColumn;
+
+    for (int i = 0; i < this->graph.getGraphSize(); i++) {
+        static int j;
+
+        quadrantRow = (i % 9) / 3;
+        quadrantColumn = (i / 9) / 3;
+    }
+}
+
 bool Sudoku::loadBoardFromFile(const string& name) {
     ifstream file;
     string lines;
@@ -70,19 +92,11 @@ bool Sudoku::loadBoardFromFile(const string& name) {
     return true;
 }
 
-void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
-    for (int i = 0; i < numbersAux.size(); i++) {
-        // Pré-colorindo
-        this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
-        this->indexConstants.insert(get<0>(numbersAux.at(i)));
-    }
-}
-
 void Sudoku::showBoardPreColorIndex() const {
     set<int>::iterator i;
     int contador = 0;
 
-    cout << "[";
+    cout << endl << "[";
 
     for (i = this->indexConstants.begin(); i != this->indexConstants.end(); i++) {
         if (i != this->indexConstants.begin())
@@ -91,7 +105,7 @@ void Sudoku::showBoardPreColorIndex() const {
         if (contador % 10 == 0 && contador)
             cout << " ";
 
-        cout << setw(2) << *i;
+        cout << *i;
         contador++;
     }
 
@@ -100,25 +114,29 @@ void Sudoku::showBoardPreColorIndex() const {
 
 void Sudoku::showFullBoard() const {
 
-    cout << endl << "  ----------------------- " << endl;
+    cout << endl << "+--------------------+" << endl;
     for (int i = 0; i < 81; i++) {
 
         if (i % 9 == 0 && i != 0) {
-            cout << " |" << endl;
+            cout << "|" << endl;
+
             if ((i / 9) % 3 == 0)
-                cout << "  ----------------------- " << endl;
+                cout << "+--------------------+" << endl;
         }
 
         if (i % 3 == 0)
-            cout << " |";
+            cout << "|";
+
 
         if (this->colors[i] == 0)
             cout << "  ";
-        else
+        else {
+
             cout << " " << this->colors[i];
 
+        }
     }
 
-    cout << " |" << endl;
-    cout << "  ----------------------- " << endl;
+    cout << "|" << endl;
+    cout << "+--------------------+" << endl;
 }

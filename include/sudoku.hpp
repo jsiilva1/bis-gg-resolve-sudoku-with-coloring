@@ -10,12 +10,12 @@
 /*
  *
  * Todo:
- * - Obter a instancia de Grafo e garantir que sea a unica [v] []
- * - Obter uma cor em uma dada posição [v] []
+ * - Obter a instancia de Grafo e garantir que seja a unica [v] [v]
+ * - Obter uma cor em uma dada posição [v] [v]
  * - Implementar o Welsh Powell para coloração [v] []
  * - Implementar o Dsatur para coloração [v] []
- * - Mostrar o tabuleiro [v] []
- * - Mostrar o tabuleiro pré-colorido dos dados do arquivo [v] []
+ * - Mostrar o tabuleiro [v] [v]
+ * - Mostrar o tabuleiro pré-colorido dos dados do arquivo [v] [v]
  * - Lê o arquivo no formato index -> value [v] []
  * - Retorna o número de cores iniciais do arquivo [v]
  *
@@ -98,6 +98,8 @@ public:
      *
      * */
     void preColoring (vector<tuple<int, int> > numbersAux);
+
+    void generateGraph();
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_SUDOKU_H
