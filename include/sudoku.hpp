@@ -100,6 +100,10 @@ public:
     void preColoring (vector<tuple<int, int> > numbersAux);
 
     void generateGraph();
+
+    int getRowQuadrant(int i) const;
+
+    int getColumnQuadrant(int i) const;
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_SUDOKU_H

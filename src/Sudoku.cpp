@@ -53,7 +53,12 @@ void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
     }
 }
 
+static int getColumnQuadrant(int i) {
+    return (i / 9) / 3;
+}
+
 void Sudoku::generateGraph() {
+
     // Aloca 81 vértices para o grafo
     this->graph.newManyVertex(81);
 
@@ -63,9 +68,42 @@ void Sudoku::generateGraph() {
     for (int i = 0; i < this->graph.getGraphSize(); i++) {
         static int j;
 
-        quadrantRow = (i % 9) / 3;
-        quadrantColumn = (i / 9) / 3;
+        quadrantRow = this->getRowQuadrant(i);
+        quadrantColumn = this->getColumnQuadrant(i);
+
+        j = i + 1; // Colunas
+
+        while (this->getColumnQuadrant(j) == quadrantColumn) {
+            if (getRowQuadrant(i) == quadrantRow) {
+                this->graph.addEdge(i, j);
+                j++;
+            } else {
+                j += 6;
+            }
+        }
+
+        j = i + 1; // Colunas
+
+        while (j % 9 > i % 9) {
+            this->graph.addEdge(i, j);
+            j++;
+        }
+
+        j = i + 9; // Colunas
+
+        while (j < 81) {
+            this->graph.addEdge(i, j);
+            j += 9;
+        }
     }
+}
+
+int Sudoku::getRowQuadrant(int i) const {
+    return (i % 9) / 3;
+}
+
+int Sudoku::getColumnQuadrant(int i) const {
+    return (i / 9) / 3;
 }
 
 bool Sudoku::loadBoardFromFile(const string& name) {

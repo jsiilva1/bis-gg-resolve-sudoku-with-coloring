@@ -7,7 +7,6 @@ using namespace std;
 int main() {
 
     Graph graph;
-    Sudoku sudoku;
 
     graph.newManyVertex(5);
 
@@ -20,10 +19,10 @@ int main() {
     graph.showGraph();
 
     string fileDirectory = "J:\\Jr Silva\\Faculdade\\bis-gg-resolve-sudoku-with-coloring\\data\\";
-    bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
 
-    if (read)
-        cout << "OK! Dados recebidos";
+    Sudoku sudoku;
+    bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
+    sudoku.generateGraph();
 
     sudoku.showFullBoard();
 }
