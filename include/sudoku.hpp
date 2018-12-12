@@ -72,10 +72,10 @@ public:
 
     /**
      *
-     *	Mostra a pré-coloração
+     *	Mostra os índices da pré-coloração
      *
     */
-    void showBoardPreColor() const;
+    void showBoardPreColorIndex() const;
 
     /**
      *

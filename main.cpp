@@ -25,5 +25,5 @@ int main() {
     if (read)
         cout << "OK! Dados recebidos";
 
-    cout << sudoku.getPreColorSize();
+    sudoku.showBoardPreColorIndex();
 }

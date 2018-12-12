@@ -5,6 +5,7 @@
 **/
 
 #include <fstream>
+#include <iomanip>
 #include "../include/sudoku.hpp"
 
 using namespace std;
@@ -77,6 +78,22 @@ void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
     }
 }
 
-void Sudoku::showBoardPreColor() const {
-    
+void Sudoku::showBoardPreColorIndex() const {
+    set<int>::iterator i;
+    int contador = 0;
+
+    cout << "[";
+
+    for (i = this->indexConstants.begin(); i != this->indexConstants.end(); i++) {
+        if (i != this->indexConstants.begin())
+            cout << ", ";
+
+        if (contador % 10 == 0 && contador)
+            cout << " ";
+
+        cout << setw(2) << *i;
+        contador++;
+    }
+
+    cout << "]" << endl;
 }
