@@ -99,7 +99,8 @@ void Sudoku::showBoardPreColorIndex() const {
 }
 
 void Sudoku::showFullBoard() const {
-    cout << "  ----------------------- ";
+
+    cout << endl << "  ----------------------- " << endl;
     for (int i = 0; i < 81; i++) {
 
         if (i % 9 == 0 && i != 0) {
@@ -119,5 +120,5 @@ void Sudoku::showFullBoard() const {
     }
 
     cout << " |" << endl;
-    cout << "  ----------------------- ";
+    cout << "  ----------------------- " << endl;
 }
