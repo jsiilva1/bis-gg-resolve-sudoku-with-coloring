@@ -17,7 +17,7 @@ Sudoku::Sudoku() {
     }
 }
 
-Sudoku::Sudoku(vector<tuple<int, int> > numbers) {
+Sudoku::Sudoku(vector<tuple<int, int> >& numbers) {
 
     // Iniciliza o tabuleiro com todas as 81 posições com uma única cor (color 0)
     for (int i = 0; i < 81; i++) {
@@ -25,15 +25,12 @@ Sudoku::Sudoku(vector<tuple<int, int> > numbers) {
     }
 
     /**
-     * Pré-colorindo o grafo
-     * O vetor de cores (colors) recebe no indice correspondente de toda a coluna esquerda os valores ques estão à direita
-     * Isso faz referência aos dados padrões do arquivo, onde mesmo é composto por index e value
+     * Pré-colore o grafo
+     * O vetor de cores (colors) recebe no indice correspondente à toda a coluna da esquerda, os valores que estão à direita
+     * Isso faz referência aos dados padrões do arquivo, onde mesmo é composto por linhas no formato {index value}
      *
      * */
-    for (int j = 0; j < numbers.size(); j++) {
-        this->colors[get<0>(numbers.at(j))] = get<1>(numbers.at(j));
-        this->indexConstants.insert(get<0>(numbers.at(j)));
-    }
+    this->preColoring(numbers);
 }
 
 const Graph& Sudoku::getGraph() const {
@@ -78,4 +75,8 @@ void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
         this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
         this->indexConstants.insert(get<0>(numbersAux.at(i)));
     }
+}
+
+void Sudoku::showBoardPreColor() const {
+    
 }

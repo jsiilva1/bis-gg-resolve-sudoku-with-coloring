@@ -31,7 +31,7 @@ private:
 
 public:
     Sudoku();
-    Sudoku(vector<tuple<int, int> > numbers);
+    Sudoku(vector<tuple<int, int> >& numbers);
     ~Sudoku() = default;
 
     /**
@@ -75,7 +75,7 @@ public:
      *	Mostra a pré-coloração
      *
     */
-    void printPreColorIndex() const;
+    void showBoardPreColor() const;
 
     /**
      *
@@ -91,6 +91,13 @@ public:
     */
     bool loadBoardFromFile(const string& name);
 
+    /**
+     *
+     * Pré-colorindo o grafo
+     * O vetor de cores (colors) recebe no indice correspondente de toda a coluna esquerda os valores ques estão à direita
+     * Isso faz referência aos dados padrões do arquivo, onde mesmo é composto por index e value
+     *
+     * */
     void preColoring (vector<tuple<int, int> > numbersAux);
 };
 
