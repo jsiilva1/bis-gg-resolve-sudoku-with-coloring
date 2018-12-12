@@ -84,12 +84,18 @@ void Sudoku::generateGraph() {
 
         j = i + 1; // Colunas
 
+        // Evita repetições das arestas
+        while (getRowQuadrant(j) == quadrantRow) j++;
+
         while (j % 9 > i % 9) {
             this->graph.addEdge(i, j);
             j++;
         }
 
         j = i + 9; // Colunas
+
+        // Evita repetições das arestas
+        while (getColumnQuadrant(j) == quadrantColumn) j += 9;
 
         while (j < 81) {
             this->graph.addEdge(i, j);
