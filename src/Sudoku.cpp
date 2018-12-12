@@ -15,6 +15,9 @@ Sudoku::Sudoku() {
     for (int i = 0; i < 81; i++) {
         this->colors[i] = 0;
     }
+
+    // Gera o grafo a partir da lógica de conexões do tabuleiro do Sudoku
+    this->generateGraph();
 }
 
 Sudoku::Sudoku(vector<tuple<int, int> >& numbers) {
@@ -31,6 +34,9 @@ Sudoku::Sudoku(vector<tuple<int, int> >& numbers) {
      *
      * */
     this->preColoring(numbers);
+
+    // Gera o grafo a partir da lógica de conexões do tabuleiro do Sudoku
+    this->generateGraph();
 }
 
 const Graph& Sudoku::getGraph() const {
@@ -62,11 +68,10 @@ void Sudoku::generateGraph() {
     // Aloca 81 vértices para o grafo
     this->graph.newManyVertex(81);
 
-    static int quadrantRow;
-    static int quadrantColumn;
-
-    for (int i = 0; i < this->graph.getGraphSize(); i++) {
+    for (int i = 0; i < 81; i++) {
         static int j;
+        static int quadrantRow;
+        static int quadrantColumn;
 
         quadrantRow = this->getRowQuadrant(i);
         quadrantColumn = this->getColumnQuadrant(i);
@@ -74,7 +79,7 @@ void Sudoku::generateGraph() {
         j = i + 1; // Colunas
 
         while (this->getColumnQuadrant(j) == quadrantColumn) {
-            if (getRowQuadrant(i) == quadrantRow) {
+            if (this->getRowQuadrant(i) == quadrantRow) {
                 this->graph.addEdge(i, j);
                 j++;
             } else {
@@ -85,7 +90,7 @@ void Sudoku::generateGraph() {
         j = i + 1; // Colunas
 
         // Evita repetições das arestas
-        while (getRowQuadrant(j) == quadrantRow) j++;
+        while (this->getRowQuadrant(j) == quadrantRow) j++;
 
         while (j % 9 > i % 9) {
             this->graph.addEdge(i, j);
@@ -95,7 +100,7 @@ void Sudoku::generateGraph() {
         j = i + 9; // Colunas
 
         // Evita repetições das arestas
-        while (getColumnQuadrant(j) == quadrantColumn) j += 9;
+        while (this->getColumnQuadrant(j) == quadrantColumn) j += 9;
 
         while (j < 81) {
             this->graph.addEdge(i, j);

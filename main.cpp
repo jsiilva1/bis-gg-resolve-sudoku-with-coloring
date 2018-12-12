@@ -23,7 +23,6 @@ int main() {
 
     Sudoku sudoku;
     bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
-    sudoku.generateGraph();
 
     sudoku.getGraph().showGraph();
 
