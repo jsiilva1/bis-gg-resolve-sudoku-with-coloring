@@ -20,9 +20,5 @@ int main() {
 
     string fileDirectory = "J:\\Jr Silva\\Faculdade\\bis-gg-resolve-sudoku-with-coloring\\data\\";
 
-    Sudoku sudoku;
-    bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
-    sudoku.generateGraph();
 
-    sudoku.showFullBoard();
 }
