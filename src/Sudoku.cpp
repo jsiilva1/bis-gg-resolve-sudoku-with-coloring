@@ -20,7 +20,7 @@ Sudoku::Sudoku() {
     this->generateGraph();
 }
 
-Sudoku::Sudoku(vector<tuple<int, int> >& numbers) {
+Sudoku::Sudoku(vector<tuple<int, int> > numbers) {
 
     // Iniciliza o tabuleiro com todas as 81 posições com uma única cor (color 0)
     for (int i = 0; i < 81; i++)
@@ -32,6 +32,7 @@ Sudoku::Sudoku(vector<tuple<int, int> >& numbers) {
      * Isso faz referência aos dados padrões do arquivo, onde mesmo é composto por linhas no formato {index value}
      *
      * */
+    // Pré-colore os números do tabuleiro no formato index -> value
     this->preColoring(numbers);
 
     // Gera o grafo a partir da lógica de conexões do tabuleiro do Sudoku
@@ -83,7 +84,7 @@ void Sudoku::generateGraph() {
         j = i + 1; // Colunas
 
         while (this->getColumnQuadrant(j) == quadrantColumn) {
-            if (this->getRowQuadrant(i) == quadrantRow) {
+            if (this->getRowQuadrant(j) == quadrantRow) {
                 this->graph.addEdge(i, j);
                 j++;
             } else {
@@ -91,7 +92,7 @@ void Sudoku::generateGraph() {
             }
         }
 
-        j = i + 1; // Colunas
+        j = i + 1; // Conexões das linhas
 
         // Evita repetições das arestas
         while (this->getRowQuadrant(j) == quadrantRow) j++;
@@ -101,7 +102,7 @@ void Sudoku::generateGraph() {
             j++;
         }
 
-        j = i + 9; // Colunas
+        j = i + 9; // Conexões das linhas
 
         // Evita repetições das arestas
         while (this->getColumnQuadrant(j) == quadrantColumn) j += 9;

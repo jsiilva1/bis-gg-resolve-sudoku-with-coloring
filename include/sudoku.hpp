@@ -42,7 +42,7 @@ private:
 
 public:
     Sudoku();
-    Sudoku(vector<tuple<int, int> >& numbers);
+    Sudoku(vector<tuple<int, int> > numbers);
     ~Sudoku() = default;
 
     /**

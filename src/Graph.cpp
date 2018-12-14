@@ -7,11 +7,10 @@
 #include <iomanip>
 #include "../include/graph.hpp"
 
-Graph::Graph(vector<set<int> > vertex) : vertex(std::move(vertex)) {}
+Graph::Graph(vector<set<int> > vertex) : vertex(std::move(vertex)) {  }
 
-int Graph::newVertex()
-{
-    this->vertex.emplace_back(set<int>());
+int Graph::newVertex() {
+    this->vertex.push_back(set<int>());
     return this->vertex.size() - 1;
 }
 
