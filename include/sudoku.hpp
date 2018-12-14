@@ -29,6 +29,15 @@ private:
     vector<tuple<int, int> > numbers;
     set<int> indexConstants;
 
+    /**
+     *
+     * Pré-colorindo o grafo
+     * O vetor de cores (colors) recebe no indice correspondente de toda a coluna esquerda os valores ques estão à direita
+     * Isso faz referência aos dados padrões do arquivo, onde mesmo é composto por index e value
+     *
+     * */
+    void preColoring (vector<tuple<int, int> > numbersAux);
+
 public:
     Sudoku();
     Sudoku(vector<tuple<int, int> >& numbers);
@@ -90,20 +99,15 @@ public:
     */
     bool loadBoardFromFile(const string& name);
 
-    /**
-     *
-     * Pré-colorindo o grafo
-     * O vetor de cores (colors) recebe no indice correspondente de toda a coluna esquerda os valores ques estão à direita
-     * Isso faz referência aos dados padrões do arquivo, onde mesmo é composto por index e value
-     *
-     * */
-    void preColoring (vector<tuple<int, int> > numbersAux);
-
     void generateGraph();
 
     int getRowQuadrant(int i) const;
 
     int getColumnQuadrant(int i) const;
+
+    int getSaturation (int index) const;
+
+    bool isColored (int index);
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_SUDOKU_H

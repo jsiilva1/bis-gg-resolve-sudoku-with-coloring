@@ -49,12 +49,10 @@ void Graph::addEdge(int v1, int v2) {
 
 void Graph::showGraph() const {
 
-    set<int>::iterator j;
-
     for (unsigned int i = 0; i < this->getGraphSize(); i++) {
         cout << "v[" << i << "] -> ";
 
-        for (j = this->vertex.at(i).begin(); j != this->vertex.at(i).end(); j++) {
+        for (auto j = this->vertex.at(i).begin(); j != this->vertex.at(i).end(); j++) {
             if (j != this->vertex.at(i).begin())
                 cout << ", ";
 

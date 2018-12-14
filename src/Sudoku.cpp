@@ -94,6 +94,10 @@ int Sudoku::getColorAt(int n) const {
     return this->colors[n];
 }
 
+bool Sudoku::isColored(int index) {
+    return this->colors[index] > 0;
+}
+
 int Sudoku::getPreColorSize() const {
     return this->indexConstants.size();
 }
@@ -137,7 +141,20 @@ bool Sudoku::loadBoardFromFile(const string& name) {
 
     return true;
 }
+/*
+int Sudoku::getSaturation(int index) const {
+    static int count = 0;
+    int colorsSize = this->colors.size();
 
+    for (int i = 0; i < colorsSize; i++) {
+        for (int j = 0; j < index; j++) {
+            if (this->graph[index][j] == 1 && ) {
+
+            }
+        }
+    }
+}
+*/
 void Sudoku::showBoardPreColorIndex() const {
     set<int>::iterator i;
     int contador = 0;
