@@ -15,7 +15,8 @@ int main() {
 
     if (read) {
         cout << sudoku.getColorAt(2) << endl;
-        cout << sudoku.isColored(6);
+        cout << sudoku.isColored(2) << endl;
+        sudoku.getSaturation(2);
     }
 
 

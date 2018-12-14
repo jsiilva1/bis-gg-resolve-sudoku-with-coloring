@@ -24,10 +24,12 @@
 class Sudoku {
 
 private:
+
     Graph graph;
+
+    set<int> indexConstants;
     int colors[81];
     vector<tuple<int, int> > numbers;
-    set<int> indexConstants;
 
     /**
      *
@@ -69,7 +71,7 @@ public:
      *	Implementação do algoritmo Welsh Powell para coloração
      *
      */
-    bool WelshPowell();
+    void WelshPowell();
 
     /**
      *
@@ -105,9 +107,11 @@ public:
 
     int getColumnQuadrant(int i) const;
 
-    int getSaturation (int index) const;
+    void getSaturation (int index);
 
-    bool isColored (int index);
+    bool isColored (int index) const;
+
+    int getColorsSize() const;
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_SUDOKU_H

@@ -12,9 +12,8 @@ using namespace std;
 Sudoku::Sudoku() {
 
     // Iniciliza o tabuleiro com todas as 81 posições com uma única cor (color 0)
-    for (int i = 0; i < 81; i++) {
+    for (int i = 0; i < 81; i++)
         this->colors[i] = 0;
-    }
 
     // Gera o grafo a partir da lógica de conexões do tabuleiro do Sudoku
     this->generateGraph();
@@ -23,9 +22,8 @@ Sudoku::Sudoku() {
 Sudoku::Sudoku(vector<tuple<int, int> >& numbers) {
 
     // Iniciliza o tabuleiro com todas as 81 posições com uma única cor (color 0)
-    for (int i = 0; i < 81; i++) {
+    for (int i = 0; i < 81; i++)
         this->colors[i] = 0;
-    }
 
     /**
      * Pré-colore o grafo
@@ -41,6 +39,35 @@ Sudoku::Sudoku(vector<tuple<int, int> >& numbers) {
 
 const Graph& Sudoku::getGraph() const {
     return this->graph;
+}
+
+int Sudoku::getColorAt(int n) const {
+    return this->colors[n];
+}
+
+bool Sudoku::isColored(int index) const {
+    return this->colors[index] > 0;
+}
+
+int Sudoku::getPreColorSize() const {
+    return this->indexConstants.size();
+}
+
+int Sudoku::getColorsSize () const {
+    return sizeof(this->colors) / 4;
+}
+
+void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
+    for (int i = 0; i < numbersAux.size(); i++) {
+        // Pré-colorindo
+        // this->colors[get<0>(numbersAux.at(i))] );
+        // this->colors[] = get<1>(numbersAux.at(i));
+        int index = get<0>(numbersAux.at(i));
+        int value = get<1>(numbersAux.at(i));
+
+        this->colors[index] = value;
+        this->indexConstants.insert(get<0>(numbersAux.at(i)));
+    }
 }
 
 void Sudoku::generateGraph() {
@@ -90,26 +117,6 @@ void Sudoku::generateGraph() {
     }
 }
 
-int Sudoku::getColorAt(int n) const {
-    return this->colors[n];
-}
-
-bool Sudoku::isColored(int index) {
-    return this->colors[index] > 0;
-}
-
-int Sudoku::getPreColorSize() const {
-    return this->indexConstants.size();
-}
-
-void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
-    for (int i = 0; i < numbersAux.size(); i++) {
-        // Pré-colorindo
-        this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
-        this->indexConstants.insert(get<0>(numbersAux.at(i)));
-    }
-}
-
 int Sudoku::getRowQuadrant(int i) const {
     return (i % 9) / 3;
 }
@@ -141,20 +148,7 @@ bool Sudoku::loadBoardFromFile(const string& name) {
 
     return true;
 }
-/*
-int Sudoku::getSaturation(int index) const {
-    static int count = 0;
-    int colorsSize = this->colors.size();
 
-    for (int i = 0; i < colorsSize; i++) {
-        for (int j = 0; j < index; j++) {
-            if (this->graph[index][j] == 1 && ) {
-
-            }
-        }
-    }
-}
-*/
 void Sudoku::showBoardPreColorIndex() const {
     set<int>::iterator i;
     int contador = 0;
@@ -202,4 +196,13 @@ void Sudoku::showFullBoard() const {
 
     cout << "|" << endl;
     cout << "+--------------------+" << endl;
+}
+
+void Sudoku::WelshPowell() {
+    vector<set<int>> possible_colors(81, set<int>());
+    vector<int> uncolored;
+
+    for (int i = 0; i < 81; i++) {
+        
+    }
 }
