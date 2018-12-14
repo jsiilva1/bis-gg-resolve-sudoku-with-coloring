@@ -167,38 +167,34 @@ void Sudoku::showBoardPreColorIndex() const {
 
 void Sudoku::showFullBoard() const {
 
-    cout << endl << "+--------------------+" << endl;
+    cout << endl;
+    cout << "  ----------------------- " << endl;
+
     for (int i = 0; i < 81; i++) {
 
-        if (i % 9 == 0 && i != 0) {
-            cout << "|" << endl;
+        if (i % 9 == 0 && i != 0){
+            cout << " |" << endl;
 
             if ((i / 9) % 3 == 0)
-                cout << "+--------------------+" << endl;
+                cout << "  ----------------------- " << endl;
         }
 
         if (i % 3 == 0)
-            cout << "|";
-
+            cout << " |";
 
         if (this->colors[i] == 0)
             cout << "  ";
-        else {
-
+        else
             cout << " " << this->colors[i];
-
-        }
     }
 
-    cout << "|" << endl;
-    cout << "+--------------------+" << endl;
+    cout << " |" << endl;
+    cout << "  ----------------------- " << endl;
 }
 
 bool Sudoku::welshPowellAlgorithm() {
     vector<set<int>> possible_colors(81, set<int>());
     vector<int> uncolored;
-
-    cout << "Cores possíveis: " << endl;
 
     for (int i = 0; i < 81; i++) {
         if (this->indexConstants.find(i) == this->indexConstants.end()) {
@@ -218,6 +214,7 @@ bool Sudoku::welshPowellAlgorithm() {
 
         // Para cada vizinho deste vértice pré-colorido
         for (auto j = neighbors.begin(); j != neighbors.end(); j++) {
+
             auto eraser = possible_colors.at(*j).find(this->colors[*i]);
 
             if (eraser != possible_colors.at(*j).end())
@@ -233,5 +230,21 @@ bool Sudoku::welshPowellAlgorithm() {
     // Iterar as possibilidades concretas de cores
     for (int i = 1; i < uncolored.size() + 1; i++) {
 
+        if (possible_colors.at(uncolored.at(i-1)).size() == 0)
+            return false;
+
+        this->colors[uncolored.at(i-1)] = *(possible_colors.at(uncolored.at(i-1)).begin());
+
+        set<int> neighbors = this->getGraph().getVertex(uncolored.at(i-1));
+
+        for (auto j = neighbors.begin(); j != neighbors.end(); j++) {
+
+            auto eraser = possible_colors.at(*j).find(this->colors[uncolored.at(i-1)]);
+
+            if (eraser != possible_colors.at(*j).end())
+                possible_colors.at(*j).erase(eraser);
+        }
     }
+
+    return true;
 }
