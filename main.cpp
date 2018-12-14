@@ -11,7 +11,9 @@ int main() {
     string fileDirectory = "J:\\Jr Silva\\Faculdade\\bis-gg-resolve-sudoku-with-coloring\\data\\";
 
     Sudoku sudoku;
-    bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test_2.txt");
+    bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
+
+    sudoku.showFullBoard();
 
     if (sudoku.welshPowellAlgorithm())
         cout << "Solução válida encontrada!" << endl;
