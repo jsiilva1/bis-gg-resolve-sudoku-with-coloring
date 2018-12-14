@@ -13,11 +13,6 @@ int main() {
     Sudoku sudoku;
     bool read = sudoku.loadBoardFromFile(fileDirectory+"data_sudoku_test.txt");
 
-    if (read) {
-        cout << sudoku.getColorAt(2) << endl;
-        cout << sudoku.isColored(2) << endl;
-        sudoku.getSaturation(2);
-    }
-
+    sudoku.welshPowellAlgorithm();
 
 }

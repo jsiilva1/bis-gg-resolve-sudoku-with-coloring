@@ -71,7 +71,7 @@ public:
      *	Implementação do algoritmo Welsh Powell para coloração
      *
      */
-    void WelshPowell();
+    bool welshPowellAlgorithm();
 
     /**
      *

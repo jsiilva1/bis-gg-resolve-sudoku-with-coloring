@@ -60,12 +60,7 @@ int Sudoku::getColorsSize () const {
 void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
     for (int i = 0; i < numbersAux.size(); i++) {
         // Pré-colorindo
-        // this->colors[get<0>(numbersAux.at(i))] );
-        // this->colors[] = get<1>(numbersAux.at(i));
-        int index = get<0>(numbersAux.at(i));
-        int value = get<1>(numbersAux.at(i));
-
-        this->colors[index] = value;
+        this->colors[get<0>(numbersAux.at(i))] = get<1>(numbersAux.at(i));
         this->indexConstants.insert(get<0>(numbersAux.at(i)));
     }
 }
@@ -198,11 +193,35 @@ void Sudoku::showFullBoard() const {
     cout << "+--------------------+" << endl;
 }
 
-void Sudoku::WelshPowell() {
+bool Sudoku::welshPowellAlgorithm() {
     vector<set<int>> possible_colors(81, set<int>());
     vector<int> uncolored;
 
+    cout << "Cores possíveis: " << endl;
+
     for (int i = 0; i < 81; i++) {
-        
+        if (this->indexConstants.find(i) == this->indexConstants.end()) {
+            // Marca o vértice como não colorido
+            uncolored.push_back(i);
+
+            // Marca uma possível cor para o vértice
+            for (int j = 1; j <= 9; j++)
+                possible_colors.at(i).insert(j);
+        }
+    }
+
+    // Para cada vértice pré-colorido
+    for (auto i = this->indexConstants.begin(); i != this->indexConstants.end(); i++) {
+        // obtém seus adjacentes
+        set<int> neighbors = this->graph.getVertex(*i);
+
+        // Para cada vizinho deste vértice pré-colorido
+        for (auto j = neighbors.begin(); j != neighbors.end(); j++) {
+            auto eraser = possible_colors.at(*j).find(this->colors[*i]);
+
+            if (eraser != possible_colors.at(*j).end())
+                possible_colors.at(*j).erase(eraser);
+
+        }
     }
 }
