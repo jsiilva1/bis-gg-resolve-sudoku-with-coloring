@@ -5,6 +5,7 @@
 **/
 
 #include <fstream>
+#include <algorithm>
 #include "../include/sudoku.hpp"
 
 using namespace std;
@@ -221,7 +222,16 @@ bool Sudoku::welshPowellAlgorithm() {
 
             if (eraser != possible_colors.at(*j).end())
                 possible_colors.at(*j).erase(eraser);
-
         }
+    }
+
+    // Ordenar os vértices na crescente, mediante uma expressão lambda, considerando a quantidade possivel de cores
+    sort(uncolored.begin(), uncolored.end(), [possible_colors](const int& i, const int& j) -> bool {
+        return possible_colors.at(i).size() < possible_colors.at(j).size();
+    });
+
+    // Iterar as possibilidades concretas de cores
+    for (int i = 1; i < uncolored.size() + 1; i++) {
+
     }
 }
