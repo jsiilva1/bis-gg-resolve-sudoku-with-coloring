@@ -13,7 +13,7 @@
  * - Obter a instancia de Grafo e garantir que seja a unica [v] [v]
  * - Obter uma cor em uma dada posição [v] [v]
  * - Implementar o Welsh Powell para coloração [v] [v]
- * - Implementar o Dsatur para coloração [v] []
+ * - Implementar o Dsatur para coloração [] []
  * - Mostrar o tabuleiro [v] [v]
  * - Mostrar o tabuleiro pré-colorido dos dados do arquivo [v] [v]
  * - Lê o arquivo no formato index -> value [v] [v]
@@ -39,6 +39,13 @@ private:
      *
      * */
     void preColoring (vector<tuple<int, int> > numbersAux);
+
+    /**
+     *
+     * Obter o número total de cores do grafo
+     *
+     * */
+    int getColorsSize() const;
 
 public:
     Sudoku();
@@ -72,13 +79,6 @@ public:
      *
      */
     bool welshPowellAlgorithm();
-
-    /**
-     *
-     *	Mostra os índices da pré-coloração
-     *
-    */
-    void showBoardPreColorIndex() const;
 
     /**
      *
@@ -124,8 +124,11 @@ public:
     */
     bool isColored (int index) const;
 
-    int getColorsSize() const;
-
+    /**
+     *
+     *	Obtém as cores únicas usadas no Grafo
+     *
+    */
     void getUniqueColors() const;
 };
 

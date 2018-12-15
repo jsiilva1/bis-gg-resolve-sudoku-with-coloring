@@ -29,6 +29,13 @@ private:
     // Empurra para trás um dado vértice para um novo vértice
     void pushBackEdge(int vertexIndex, int vertexTarget);
 
+    /**
+     *
+     *	Obtém o tamanho do grafo
+     *
+    */
+    int getGraphSize() const;
+
 public:
     Graph() = default;
     Graph(vector<set<int> > vertices);
@@ -36,14 +43,14 @@ public:
 
     /**
      *
-     * Adiciona um novo vértice e retorna o número
+     * Adiciona um novo vértice e retorna o número do vértice
      *
      * */
     int newVertex();
 
     /**
      *
-     * Adicionar n vértices ap grafo
+     * Adicionar n vértices ao grafo
      *
      * */
     void newManyVertex(int n);
@@ -82,14 +89,6 @@ public:
      *
     */
     void showGraph() const;
-
-    /**
-     *
-     *	Obtém o tamanho do grafo
-     *
-    */
-    int getGraphSize() const;
-
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_GRAPH_HPP
