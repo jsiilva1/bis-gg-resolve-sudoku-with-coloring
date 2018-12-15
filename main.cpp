@@ -3,7 +3,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <iostream>
-#include <locale>
 
 #include "include/graph.hpp"
 #include "include/sudoku.hpp"
@@ -11,8 +10,6 @@
 using namespace std;
 
 int main() {
-
-    setlocale(LC_ALL, "portuguese");
 
     // Full path dos arquivos de entrada
     // Alterar para o contexto absoluto do projeto de sua máquina
@@ -24,6 +21,13 @@ int main() {
     bool read = sudoku.loadBoardFromFile(fileDirectory+"sudoku_data_3.txt");
 
     if (read) {
+
+        cout << "Número de pré-cores do grafo: " << endl;
+        cout << sudoku.getPreColorSize() << endl << endl;
+
+        cout << "Conjunto de cores únicas: " << endl;
+        sudoku.getUniqueColors();
+        cout << endl << endl;
 
         cout  << "Tabuleiro pré-colorido: ";
         sudoku.showFullBoard();

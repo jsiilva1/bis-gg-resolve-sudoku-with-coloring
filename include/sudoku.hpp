@@ -119,20 +119,14 @@ public:
 
     /**
      *
-     *	Obtém o grau de saturação de um dado vértice
-     *
-    */
-    void getSaturation (int index);
-
-    /**
-     *
      *	Verifica se um vértice esta colorido
      *
     */
     bool isColored (int index) const;
 
-
     int getColorsSize() const;
+
+    void getUniqueColors() const;
 };
 
 #endif //BIS_GG_RESOLVE_SUDOKU_WITH_COLORING_SUDOKU_H

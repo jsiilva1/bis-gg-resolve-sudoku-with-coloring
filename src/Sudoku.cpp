@@ -46,16 +46,31 @@ int Sudoku::getColorAt(int n) const {
     return this->colors[n];
 }
 
+int Sudoku::getColorsSize () const {
+    return sizeof(this->colors) / 4;
+}
+
+void Sudoku::getUniqueColors() const {
+    // (n * (n-1)) / 2
+    cout << "[";
+    for (int i = 0; i < this->getColorsSize(); i++) {
+        int j;
+        for (j = 0; j < i; j++)
+            if (this->colors[i] == this->colors[j])
+                break;
+
+        if (i == j)
+            cout << this->colors[i] << ", ";
+    }
+    cout << "]";
+}
+
 bool Sudoku::isColored(int index) const {
     return this->colors[index] > 0;
 }
 
 int Sudoku::getPreColorSize() const {
     return this->indexConstants.size();
-}
-
-int Sudoku::getColorsSize () const {
-    return sizeof(this->colors) / 4;
 }
 
 void Sudoku::preColoring(vector<tuple<int, int> > numbersAux) {
@@ -143,53 +158,6 @@ bool Sudoku::loadBoardFromFile(const string& name) {
     return true;
 }
 
-void Sudoku::showBoardPreColorIndex() const {
-    set<int>::iterator i;
-    int contador = 0;
-
-    cout << endl << "[";
-
-    for (i = this->indexConstants.begin(); i != this->indexConstants.end(); i++) {
-        if (i != this->indexConstants.begin())
-            cout << ", ";
-
-        if (contador % 10 == 0 && contador)
-            cout << " ";
-
-        cout << *i;
-        contador++;
-    }
-
-    cout << "]" << endl;
-}
-
-void Sudoku::showFullBoard() const {
-
-    cout << endl;
-    cout << "  ----------------------- " << endl;
-
-    for (int i = 0; i < 81; i++) {
-
-        if (i % 9 == 0 && i != 0){
-            cout << " |" << endl;
-
-            if ((i / 9) % 3 == 0)
-                cout << "  ----------------------- " << endl;
-        }
-
-        if (i % 3 == 0)
-            cout << " |";
-
-        if (this->colors[i] == 0)
-            cout << "  ";
-        else
-            cout << " " << this->colors[i];
-    }
-
-    cout << " |" << endl;
-    cout << "  ----------------------- " << endl;
-}
-
 bool Sudoku::welshPowellAlgorithm() {
     vector<set<int>> possible_colors(81, set<int>());
     vector<int> uncolored;
@@ -245,4 +213,31 @@ bool Sudoku::welshPowellAlgorithm() {
     }
 
     return true;
+}
+
+void Sudoku::showFullBoard() const {
+
+    cout << endl;
+    cout << "  ----------------------- " << endl;
+
+    for (int i = 0; i < 81; i++) {
+
+        if (i % 9 == 0 && i != 0){
+            cout << " |" << endl;
+
+            if ((i / 9) % 3 == 0)
+                cout << "  ----------------------- " << endl;
+        }
+
+        if (i % 3 == 0)
+            cout << " |";
+
+        if (this->colors[i] == 0)
+            cout << "  ";
+        else
+            cout << " " << this->colors[i];
+    }
+
+    cout << " |" << endl;
+    cout << "  ----------------------- " << endl;
 }
