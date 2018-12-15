@@ -1,9 +1,8 @@
-/**
- *
- * Created by Jr Silva on 11/12/2018
- *
-**/
+// Copyright (c) 2018 Jr Silva
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <iostream>
 #include <fstream>
 #include <algorithm>
 #include "../include/sudoku.hpp"
@@ -72,16 +71,14 @@ void Sudoku::generateGraph() {
     // Aloca 81 vértices para o grafo
     this->graph.newManyVertex(81);
 
-    static int quadrantRow;
-    static int quadrantColumn;
+    static int j, quadrantColumn, quadrantRow;
 
     for (int i = 0; i < 81; i++) {
-        static int j;
 
         quadrantRow = this->getRowQuadrant(i);
         quadrantColumn = this->getColumnQuadrant(i);
 
-        j = i + 1; // Colunas
+        j = i + 1; // Conexões entre as colunas
 
         while (this->getColumnQuadrant(j) == quadrantColumn) {
             if (this->getRowQuadrant(j) == quadrantRow) {
@@ -92,7 +89,7 @@ void Sudoku::generateGraph() {
             }
         }
 
-        j = i + 1; // Conexões das linhas
+        j = i + 1; // Conexões entre linhas
 
         // Evita repetições das arestas
         while (this->getRowQuadrant(j) == quadrantRow) j++;

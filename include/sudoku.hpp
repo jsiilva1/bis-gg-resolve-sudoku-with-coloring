@@ -12,11 +12,11 @@
  * Todo:
  * - Obter a instancia de Grafo e garantir que seja a unica [v] [v]
  * - Obter uma cor em uma dada posição [v] [v]
- * - Implementar o Welsh Powell para coloração [v] []
+ * - Implementar o Welsh Powell para coloração [v] [v]
  * - Implementar o Dsatur para coloração [v] []
  * - Mostrar o tabuleiro [v] [v]
  * - Mostrar o tabuleiro pré-colorido dos dados do arquivo [v] [v]
- * - Lê o arquivo no formato index -> value [v] []
+ * - Lê o arquivo no formato index -> value [v] [v]
  * - Retorna o número de cores iniciais do arquivo [v]
  *
  * */
@@ -64,7 +64,7 @@ public:
      *	Implementação do algoritmo DSatur para coloração
      *
      */
-    bool DSatur();
+    bool DSaturAlgorithm();
 
     /**
      *
@@ -101,15 +101,36 @@ public:
     */
     bool loadBoardFromFile(const string& name);
 
+    /**
+     *
+     *	Gera as arestas do grafo baseado no arquivo
+     *
+    */
     void generateGraph();
 
+    /**
+     *
+     *	Método para obter uma linha/coluna referente ao índice do grafo, para pôr no tabuleiro
+     *	Garante a logica da posição dos números na matriz ou nas submatrizes do tabuleiro
+     *
+    */
     int getRowQuadrant(int i) const;
-
     int getColumnQuadrant(int i) const;
 
+    /**
+     *
+     *	Obtém o grau de saturação de um dado vértice
+     *
+    */
     void getSaturation (int index);
 
+    /**
+     *
+     *	Verifica se um vértice esta colorido
+     *
+    */
     bool isColored (int index) const;
+
 
     int getColorsSize() const;
 };
