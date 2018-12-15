@@ -20,3 +20,4 @@ O algoritmo de Welsh e Powell é um algoritmo guloso, visto que determina a cor 
 - https://en.wikipedia.org/wiki/Graph_coloring
 - https://www.researchgate.net/publication/260517476_TECNICAS_DE_COLORACAO_DE_GRAFOS_APLICADAS_A_RESOLUCAO_DE_QUEBRA-CABECAS_DO_TIPO_SUDOKU
 - http://www.din.uem.br/sbpo/sbpo2016/pdf/156677.pdf
+- https://www.polymtl.ca/pub/sites/lagrapheur/docs/en/documents/NotesChap7.pdf
