@@ -21,7 +21,7 @@ int main() {
     Sudoku sudoku;
 
     // Lê os dados do arquivo e implanta na instância do Sudoku
-    bool read = sudoku.loadBoardFromFile(fileDirectory+"sudoku_data_2.txt");
+    bool read = sudoku.loadBoardFromFile(fileDirectory+"sudoku_data_3.txt");
 
     if (read) {
 
