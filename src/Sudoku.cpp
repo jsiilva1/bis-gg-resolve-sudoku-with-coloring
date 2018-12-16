@@ -12,18 +12,21 @@ using namespace std;
 Sudoku::Sudoku() {
 
     // Iniciliza o tabuleiro com todas as 81 posições com uma única cor (color 0)
-    for (int i = 0; i < 81; i++)
-        this->colors[i] = 0;
+    this->startColors();
 
     // Gera o grafo a partir da lógica de conexões do tabuleiro do Sudoku
     this->generateGraph();
 }
 
+void Sudoku::startColors() {
+    for (int i = 0; i < 81; i++)
+        this->colors[i] = 0;
+}
+
 Sudoku::Sudoku(vector<tuple<int, int> > numbers) {
 
     // Iniciliza o tabuleiro com todas as 81 posições com uma única cor (color 0)
-    for (int i = 0; i < 81; i++)
-        this->colors[i] = 0;
+    this->startColors();
 
     /**
      * Pré-colore o grafo

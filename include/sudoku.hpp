@@ -40,6 +40,8 @@ private:
      * */
     void preColoring (vector<tuple<int, int> > numbersAux);
 
+    void startColors ();
+
     /**
      *
      * Obter o número total de cores do grafo
